@@ -17,11 +17,11 @@ public class UrlExample {
     private static void checkGoogle() throws IOException {
         URL url = new URL("https://www.google.com");
         URLConnection urlConnection = url.openConnection();
-        urlConnection.setDoOutput(true);
 
-        try (OutputStream outputStream = urlConnection.getOutputStream()) {
-        }
+//        urlConnection.setDoOutput(true);
+//        try (OutputStream outputStream = urlConnection.getOutputStream()) {
+//        }
 
-        System.out.println();
+//        System.out.println(urlConnection.getHeaderField());
     }
 }
