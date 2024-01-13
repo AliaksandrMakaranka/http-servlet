@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Enumeration;
 
 @WebServlet("/first")
 public class FirstServlet extends HttpServlet {
@@ -19,6 +20,15 @@ public class FirstServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Enumeration<String> headerNames = req.getHeaderNames();
+
+        while (headerNames.hasMoreElements()) {
+            String header = headerNames.nextElement();
+            System.out.println(req.getHeader(header));
+        }
+
+        resp.setHeader("token", "1337");
+
         resp.setContentType("text/html");
         try (PrintWriter writer = resp.getWriter()) {
             writer.write("<h1>Hello from first servlet</h2>");
