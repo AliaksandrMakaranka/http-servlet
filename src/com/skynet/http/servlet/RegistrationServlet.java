@@ -5,14 +5,17 @@ import com.skynet.http.exception.ValidationException;
 import com.skynet.http.service.UserService;
 import com.skynet.http.util.JspHelper;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 
 import java.io.IOException;
 import java.util.List;
 
+@MultipartConfig(fileSizeThreshold = 1024 * 1024)
 @WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
 
@@ -30,6 +33,7 @@ public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         CreateUserDto userDto = CreateUserDto.builder()
                 .name(req.getParameter("name"))
+                .image(req.getPart("image"))
                 .birthday(req.getParameter("birthday"))
                 .email(req.getParameter("email"))
                 .password(req.getParameter("password"))
