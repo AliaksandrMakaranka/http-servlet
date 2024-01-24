@@ -12,6 +12,9 @@
     <title>Title</title>
 </head>
 <body>
+<!--todo fixt it -->
+<img src="${pageContext.request.contextPath}/images/" alt="User image">
+
 <form action="/registration" method="post" enctype="multipart/form-data">
     <label for="name">Name:
         <input type="text" name="name" id="name">
