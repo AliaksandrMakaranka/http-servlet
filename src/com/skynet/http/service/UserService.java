@@ -2,14 +2,18 @@ package com.skynet.http.service;
 
 import com.skynet.http.dao.UserDao;
 import com.skynet.http.dto.CreateUserDto;
+import com.skynet.http.dto.UserDto;
 import com.skynet.http.entity.User;
 import com.skynet.http.exception.ValidationException;
 import com.skynet.http.mapper.CreateUserMapper;
+import com.skynet.http.mapper.UserMapper;
 import com.skynet.http.validator.CreateUserValidator;
 import com.skynet.http.validator.ValidationResult;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
+
+import java.util.Optional;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class UserService {
@@ -19,7 +23,13 @@ public class UserService {
     private final CreateUserValidator createUserValidator = CreateUserValidator.getInstance();
     private final UserDao userDao = UserDao.getInstance();
     private final CreateUserMapper createUserMapper = CreateUserMapper.getInstance();
+    private final UserMapper userMapper = UserMapper.getInstance();
     private final ImageService imageService = ImageService.getInstance();
+
+    public Optional<UserDto> login(String email, String password) {
+        return userDao.findByEmailAndPassword(email, password)
+                .map(userMapper::mapFrom);
+    }
 
 
     @SneakyThrows
