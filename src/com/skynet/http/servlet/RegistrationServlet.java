@@ -16,12 +16,15 @@ import java.io.IOException;
 import java.util.List;
 
 @MultipartConfig(fileSizeThreshold = 1024 * 1024)
-@WebServlet("/registration")
+@WebServlet(value = "/registration", name = "RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
 
     private final UserService userService = UserService.getInstance();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        if (true) {
+//            throw new RuntimeException();
+//        } test error
         req.setAttribute("roles", List.of("USER","ADMIN"));
         req.setAttribute("genders", List.of("MALE","FEMALE"));
 
