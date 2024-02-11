@@ -9,13 +9,14 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Set;
 
 import static com.skynet.http.util.UrlPath.*;
 
 @WebFilter("/*")
 public class AuthorizationFilter implements Filter {
-    public static final Set<String> PUBLIC_PATH = Set.of(LOGIN, REGISTRATION, IMAGES);
+    public static final Set<String> PUBLIC_PATH = Set.of(LOGIN, REGISTRATION, IMAGES, LOCALE);
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
