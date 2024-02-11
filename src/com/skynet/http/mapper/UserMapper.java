@@ -2,7 +2,6 @@ package com.skynet.http.mapper;
 
 import com.skynet.http.dto.UserDto;
 import com.skynet.http.entity.User;
-import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
 import static lombok.AccessLevel.*;

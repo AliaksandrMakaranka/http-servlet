@@ -3,19 +3,18 @@ package com.skynet.http.service;
 import com.skynet.http.dao.UserDao;
 import com.skynet.http.dto.CreateUserDto;
 import com.skynet.http.dto.UserDto;
-import com.skynet.http.entity.User;
 import com.skynet.http.exception.ValidationException;
 import com.skynet.http.mapper.CreateUserMapper;
 import com.skynet.http.mapper.UserMapper;
 import com.skynet.http.validator.CreateUserValidator;
-import com.skynet.http.validator.ValidationResult;
-import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 
 import java.util.Optional;
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+import static lombok.AccessLevel.*;
+
+@NoArgsConstructor(access = PRIVATE)
 public class UserService {
 
     private static final UserService INSTANCE = new UserService();

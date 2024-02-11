@@ -3,6 +3,7 @@ package com.skynet.http.servlet;
 import com.skynet.http.dto.UserDto;
 import com.skynet.http.service.UserService;
 import com.skynet.http.util.JspHelper;
+import com.skynet.http.util.UrlPath;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -12,7 +13,7 @@ import lombok.SneakyThrows;
 
 import java.io.IOException;
 
-@WebServlet("/login")
+@WebServlet(UrlPath.LOGIN)
 public class LoginServlet extends HttpServlet {
 
     private final UserService userService = UserService.getInstance();
